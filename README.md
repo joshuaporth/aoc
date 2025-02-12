@@ -1,15 +1,17 @@
-# aoc
+# Advent of Code 🎄 🎁
+> "Christmas isn't just a day, it's a frame of mind."  
+> - Kris Kringle, Miracle on 34th Street
 
-To install dependencies:
+## 2024
+This year was created using [Bun](https://bun.sh) via `bun init` in bun v1.1.29. Bun is a fast all-in-one JavaScript runtime.  
 
+### To install dependencies:
 ```bash
 bun install
 ```
 
-To run:
-
+### To run:
 ```bash
-bun run index.ts
+bun run 2024/day/[DAY]/index.ts
 ```
-
-This project was created using `bun init` in bun v1.1.29. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Each `index.ts` contains the implementation for Part 1 and Part 2; Runing `index.ts` will solve both parts.
