@@ -1,6 +1,7 @@
 # Advent of Code 🎄 🎁
-> "Christmas isn't just a day, it's a frame of mind."  
-> - Kris Kringle, Miracle on 34th Street
+> "Christmas isn't just a day, it's a frame of mind."
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_- Kris Kringle, Miracle on 34th Street_
 
 ## 2024
 This year was created using [Bun](https://bun.sh) via `bun init` in bun v1.1.29. Bun is a fast all-in-one JavaScript runtime.  
