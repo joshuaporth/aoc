@@ -31,6 +31,25 @@ const permute = (ops: Op[], length: number, prefix: Op[] = []): Op[][] => {
     return permutations;
 }
 
+const getTotalCalibrationResult = (equations: number[][], ops: Op[]) => {
+    let result = 0;
+    for (const eq of equations) {
+        const testValue = eq[0];
+        const programs = permute(ops, eq.length - 2);
+        for (const p of programs) {
+            const stack = structuredClone(eq.slice(1));
+            for (const op of p) {
+                op(stack);
+            }
+            if (stack[0] === testValue) {
+                result += testValue;
+                break;
+            }
+        }
+    }
+    return result;
+}
+
 const inputPath = `${__dirname}/input.txt`;
 const bunFile = Bun.file(inputPath);
 let input = await bunFile.text();
@@ -44,20 +63,8 @@ for (const line of lines) {
     equations.push([answer, ...nums])
 }
 
-let totalCalibrationResult = 0;
-for (const eq of equations) {
-    const testValue = eq.shift();
-    const programs = permute([add, mul, concat], eq.length - 1);
-    for (const p of programs) {
-        const stack = structuredClone(eq);
-        for (const op of p) {
-            op(stack);
-        }
-        if (stack[0] === testValue) {
-            totalCalibrationResult += testValue;
-            break;
-        }
-    }
-}
+let result = getTotalCalibrationResult(equations, [add, mul]);
+console.log(`Total Calibration Result w/ ADD and MUL: ${result}`);
 
-console.log(`Total Calibration Result: ${totalCalibrationResult}`);
+result = getTotalCalibrationResult(equations, [add, mul, concat]);
+console.log(`Total Calibration Result w/ ADD, MUL, and CONCAT: ${result}`);
