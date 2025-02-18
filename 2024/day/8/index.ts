@@ -1,8 +1,3 @@
-enum Direction {
-    Up,
-    Down
-};
-
 interface Position {
     X: number,
     Y: number
@@ -69,16 +64,17 @@ class AntennaMap {
                     }
                     const xDiff = Math.abs(a.X - b.X);
                     const yDiff = Math.abs(a.Y - b.Y);
+                    // Find antinodes above
                     let harmonic = 1;
                     do {
-                        const antinodeA: Position = {
+                        const antinode: Position = {
                             X: (a.X < b.X) ? a.X - xDiff * harmonic : a.X + xDiff * harmonic,
                             Y: (a.Y < b.Y) ? a.Y - yDiff * harmonic : a.Y + yDiff * harmonic
                         };
-                        if (this.#isOnMap(antinodeA)) {
-                            const address = this.#getAddress(antinodeA);
+                        if (this.#isOnMap(antinode)) {
+                            const address = this.#getAddress(antinode);
                             if (!seen.has(address)) {
-                                antinodes.push(antinodeA);
+                                antinodes.push(antinode);
                                 seen.add(address);
                             }
                         } else {
@@ -86,16 +82,17 @@ class AntennaMap {
                         }
                         harmonic += 1;
                     } while (findResonantNodes);
+                    // Find antinodes below
                     harmonic = 1;
                     do {
-                        const antinodeB: Position = {
+                        const antinode: Position = {
                             X: (a.X < b.X) ? b.X + xDiff * harmonic : b.X - xDiff * harmonic,
                             Y: (a.Y < b.Y) ? b.Y + yDiff * harmonic : b.Y - yDiff * harmonic
                         };
-                        if (this.#isOnMap(antinodeB)) {
-                            const address = this.#getAddress(antinodeB);
+                        if (this.#isOnMap(antinode)) {
+                            const address = this.#getAddress(antinode);
                             if (!seen.has(address)) {
-                                antinodes.push(antinodeB);
+                                antinodes.push(antinode);
                                 seen.add(address);
                             }
                         } else {
