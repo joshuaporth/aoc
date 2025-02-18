@@ -36,7 +36,7 @@ class AntennaMap {
         return nodes;
     }
 
-    #getAddress(pos: Position) {
+    #getAddress(pos: Position): number {
         return ((pos.Y - 1) * this.#width - 1) + pos.X;
     }
 
@@ -44,7 +44,7 @@ class AntennaMap {
         return pos.X >= 0 && pos.X <= this.#width - 1 && pos.Y >= 0 && pos.Y <= this.#height - 1;
     }
 
-    findAntinodes(findResonantNodes: boolean = false) {
+    findAntinodes(findResonantNodes: boolean = false): Position[] {
         const nodes = this.#getNodes();
         const antinodes: Position[] = [];
         const seen = new Set<number>();
