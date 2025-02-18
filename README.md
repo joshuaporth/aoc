@@ -13,6 +13,6 @@ bun install
 
 ### To run:
 ```bash
-bun run 2024/day/[DAY]/index.ts
+bun run day/[DAY]/index.ts
 ```
 Each `index.ts` contains the implementation for Part 1 and Part 2; Runing `index.ts` will solve both parts.
