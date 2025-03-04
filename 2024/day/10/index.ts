@@ -18,7 +18,7 @@ function countReachablePeeks(
 	j: number,
 	topoMap: number[][],
 	peeks: Set<number> = new Set(),
-	step: number = 0
+	step: number = 0,
 ): number {
 	if (topoMap[i] === undefined || topoMap[i][j] === undefined || topoMap[i][j] !== step) {
 		return 0;
