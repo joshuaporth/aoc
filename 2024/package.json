@@ -5,8 +5,5 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "prettier": "^3.5.3"
   }
 }
