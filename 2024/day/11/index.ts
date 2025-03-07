@@ -26,12 +26,12 @@ let input = await bunFile.text();
 
 const stones = input.split(" ");
 
-let blinks = 25;
-countStonesAfterBlinking(stones, blinks).then((count) => {
-	console.log(`Stones after blinking ${blinks} times: ${count}`);
+const part1Blinks = 25;
+countStonesAfterBlinking(stones, part1Blinks).then((count) => {
+	console.log(`Stones after blinking ${part1Blinks} times: ${count}`);
 });
 
-blinks = 75;
-countStonesAfterBlinking(stones, blinks).then((count) => {
-	console.log(`Stones after blinking ${blinks} times: ${count}`);
+const part2Blinks = 75;
+countStonesAfterBlinking(stones, part2Blinks).then((count) => {
+	console.log(`Stones after blinking ${part2Blinks} times: ${count}`);
 });
