@@ -4,12 +4,13 @@ interface Size {
 	Sides: number;
 }
 
-function getCoordinate(i: number, j: number, garden: string[][]): number {
+function getAddress(i: number, j: number, garden: string[][]): number {
 	return garden.length * i + j;
 }
 
 function countCorners(i: number, j: number, garden: string[][], plot: string): number {
 	let result = 0;
+
 	const up = i - 1 >= 0 ? garden[i - 1][j] === plot : false;
 	const down = i + 1 < garden.length ? garden[i + 1][j] === plot : false;
 	const left = j - 1 >= 0 ? garden[i][j - 1] === plot : false;
@@ -32,12 +33,12 @@ function countCorners(i: number, j: number, garden: string[][], plot: string): n
 
 function analyzePlot(plot: string, garden: string[][], i: number, j: number, mem: Set<number> = new Set()): Size {
 	const size: Size = { Area: 0, Perimeter: 0, Sides: 0 };
-	const coord = getCoordinate(i, j, garden);
-	if (mem.has(coord)) {
+	const addr = getAddress(i, j, garden);
+	if (mem.has(addr)) {
 		return size;
 	}
 	if (i >= 0 && i < garden.length && j >= 0 && j < garden[i].length && garden[i][j] === plot) {
-		mem.add(coord);
+		mem.add(addr);
 		size.Area += 1;
 	} else {
 		size.Perimeter = 1;
@@ -80,8 +81,8 @@ let discountPrice = 0;
 let seen = new Set<number>();
 for (let i = 0; i < garden.length; i++) {
 	for (let j = 0; j < garden[i].length; j++) {
-		const coord = getCoordinate(i, j, garden);
-		if (!seen.has(coord)) {
+		const addr = getAddress(i, j, garden);
+		if (!seen.has(addr)) {
 			const mem = new Set<number>();
 			const size = analyzePlot(garden[i][j], garden, i, j, mem);
 			seen = new Set([...seen, ...mem]);
