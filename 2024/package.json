@@ -5,5 +5,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.1.2"
   }
 }
